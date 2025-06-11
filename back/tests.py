@@ -1,6 +1,7 @@
 import unittest
 import os
 from Database import Database
+import json
 
 
 DATABASE_TEST_PATH = "sampledatabase.json"
@@ -12,10 +13,11 @@ class TestDatabaseCreation(unittest.TestCase):
         file_exists = os.path.isfile(DATABASE_TEST_PATH)
         self.assertTrue(file_exists)
 
-    # def test_user_catagory_exists():
-    #     Database(DATABASE_TEST_PATH)
-    #     with open(DATABASE_TEST_PATH, 'r') as f:
-    #         json_data = json.load(f.read())
+    def test_user_catagory_exists(self):
+        Database(DATABASE_TEST_PATH)
+        with open(DATABASE_TEST_PATH, "r") as f:
+            json_data = json.load(f)
+            self.assertTrue("accounts" in json_data)
 
 
 # class TestAccountMethods(unittest.TestCase):
